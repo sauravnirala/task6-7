@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hello World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --fg: #f0ece0;
+      --accent: #e8ff47;
+      --dim: #3a3a3a;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'DM Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--dim) 1px, transparent 1px),
+        linear-gradient(90deg, var(--dim) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 18vw, 14rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      color: var(--fg);
+      opacity: 0;
+      animation: fadeUp 0.9s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    h1 span {
+      color: var(--accent);
+      display: block;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: var(--accent);
+      margin: 2rem auto;
+      opacity: 0;
+      animation: expand 0.7s 0.5s ease forwards;
+    }
+
+    .sub {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      color: #888;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes expand {
+      from { opacity: 0; width: 0; }
+      to   { opacity: 1; width: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="tag">nginx · html · served fresh</p>
+    <h1>Hello<span>World.</span></h1>
+    <div class="divider"></div>
+    <p class="sub">your server is up and running</p>
+  </div>
+</body>
+</html>
